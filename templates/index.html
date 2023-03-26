@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text input example</title>
+</head>
+<body>
+<h1>Enter Text:</h1>
+<form method="POST" action="{{ url_for('post') }}">
+    <label for="api-request">API request:</label><br>
+    <textarea id="api_request" name="api_request" rows="4" cols="50"></textarea><br><br>
+    <label for="post-title">Post title:</label><br>
+    <textarea id="post_title" name="post_title" rows="4" cols="50"></textarea><br><br>
+    <label for="icatch-title">icatch title:</label><br>
+    <textarea id="icatch_title" name="icatch_title" rows="4" cols="50"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<button onclick="copyPreviousPost()">前回の内容をコピーする</button>
+
+<h1>前回の投稿</h1>
+<p>API request</p>
+<textarea id="previous-api-request" rows="4" cols="50">{{ previous_api_request }}</textarea>
+<p>Post title</p>
+<textarea id="previous-post-title" rows="4" cols="50">{{ previous_post_title }}</textarea>
+<p>icatch title</p>
+<textarea id="previous-icatch-title" rows="4" cols="50">{{ previous_icatch_title }}</textarea>
+
+<script>
+    function copyPreviousPost() {
+        console.log("copyPreviousPost");
+        document.getElementById("api_request").value = document.getElementById("previous-api-request").value;
+        document.getElementById("post_title").value = document.getElementById("previous-post-title").value;
+        document.getElementById("icatch_title").value = document.getElementById("previous-icatch-title").value;
+    }
+</script>
+</body>
+</html>
