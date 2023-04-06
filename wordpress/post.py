@@ -28,8 +28,7 @@ def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, media_id
         res = requests.post(
             post_api_url,
             json=post_data,
-            auth=(API_USERNAME, API_PASSWORD),
-            timeout=1
+            auth=(API_USERNAME, API_PASSWORD)
         )
         print(f"Result: {res.status_code}")
         if res.status_code == 201:

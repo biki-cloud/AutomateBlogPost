@@ -4,19 +4,20 @@
     <title>Results</title>
 </head>
 <body>
+    <h1>作成結果</h1>
     <a href="/">入力画面へ戻る</a>
-    <h1>Results:</h1>
-    <p>Status Code: {{ status_code }}</p>
-    <p>Posted URL</p>
-    <a href="{{ posted_url }} ">{{ posted_url }}</a>
-    <p>Content Message</p>
+    <h2>ステータスコード</h2>
+    <p>{{ status_code }}</p>
+    <h2>作成したブログ</h2>
+    <a href="{{ posted_url }} " target="_blank" rel="noopener noreferrer">{{ posted_url }}</a>
+    <h2>投稿結果詳細</h2>
     <div id="my-data"></div>
     <script>
       var myData = JSON.parse('{{ res_json|tojson|safe }}');
       var myDataHtml = JSON.stringify(myData, null, 4);
       document.getElementById("my-data").innerHTML = '<pre>' + myDataHtml + '</pre>';
     </script>
-    <p>Error Msg</p>
+    <h2>エラーメッセージ</h2>
     <p>{{ error_msg }}</p>
 
 
