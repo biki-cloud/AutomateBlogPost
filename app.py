@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 import os
 from requests import Response
+import logging
+import urllib.parse
 
 from lib.wordpress.post import post as wp_post, create_wordpress_post_html
 from lib.icatch.create_and_push import create_and_upload
-import logging
 
 app = Flask(__name__)
 

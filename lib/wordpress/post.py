@@ -56,9 +56,8 @@ def create_wordpress_post_html(request_filepath) -> str:
     content = ""
     post_html = use_chat_GPT_API(api_question, os.getenv("OUTPUT_CHAT_GPT_RESPONSE_PATH"))
     content += post_html
-    # 広告情報(javascript)を入れると、wordpressの投稿が403エラーになる。
-    # with open("assets/affiliates/affiliate.html") as fp:
-        # content += fp.read()
+    with open("assets/affiliates/affiliate.html") as fp:
+        content += fp.read()
     with open(os.getenv("OUTPUT_POSTED_HTML_PATH"), "w") as fp:
         fp.write(content)
     return content

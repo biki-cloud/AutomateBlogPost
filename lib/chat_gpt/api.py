@@ -12,9 +12,16 @@ def chat_GPT_API(request_message: str) -> str:
     openai.api_key = os.getenv("CHAT_GPT_API_KEY")
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model=os.getenv("CHAT_GPT_API_MODEL"),
         messages=[
-            {"role": "user", "content": request_message},  # ※1後述
+            {
+                "role": "user",
+                "content": request_message
+            },  
+            {
+                "role": "system",
+                "content": "あなたはSEOのプロフェッショナルです。日本語で返答してください。"
+            },
         ]
     )
     return response["choices"][0]["message"]["content"]  # 返信のみを出力
