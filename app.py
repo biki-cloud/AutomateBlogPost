@@ -60,6 +60,7 @@ def post():
         os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_CONTENT_POST_ENTRY_POINT"),
         os.getenv("WORDPRESS_API_USERNAME"),
         os.getenv("WORDPRESS_API_PASSWORD"),
+        gpt_model  # 追加
         # create_and_upload(os.getenv("INPUT_ICATCH_TITLE_PATH"))
     )
     posted_url = ""
