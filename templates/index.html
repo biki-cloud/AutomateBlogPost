@@ -12,7 +12,12 @@
     <textarea id="post_title" name="post_title" rows="4" cols="50"></textarea><br><br>
     <label for="icatch-title">アイキャッチタイトル</label><br>
     <textarea id="icatch_title" name="icatch_title" rows="4" cols="50"></textarea><br><br>
-
+    <label for="gpt-model">Choose a GPT model:</label><br>
+    <select name="gpt-model" id="gpt-model">
+        <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+        <option value="text-davinci-002">text-davinci-002</option>
+        <!-- 他のモデルを追加 -->
+    </select><br><br>
     <input type="submit" value="ブログ作成開始">
 </form>
 <br>

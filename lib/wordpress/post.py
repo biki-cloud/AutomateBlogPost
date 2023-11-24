@@ -7,7 +7,7 @@ from lib.chat_gpt.api import use_chat_GPT_API
 # https://developer.wordpress.com/docs/api/1.1/post/sites/%24site/media/new/
 
 
-def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, media_id=None):
+def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, gpt_model, media_id=None):  # gpt_modelを追加
     request_filepath = os.getenv("INPUT_API_REQUEST_PATH")
     print(f"request file: {request_filepath}")
     print(post_api_url)
@@ -19,7 +19,7 @@ def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, media_id
     # TODO: contentの内容次第で403エラーになる。長いのか？試しにtest.pyで試してみる。
     post_data = {
         'title': title,
-        'content': create_content_func(request_filepath),
+        'content': create_content_func(request_filepath, gpt_model),  # gpt_modelを追加
         # 'content': 'xxxxxx',
         'slug': title,
         'status': 'publish',  # draft=下書き、publish=公開　省略時はdraftになる,
@@ -50,11 +50,11 @@ def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, media_id
     return do_post()
 
 
-def create_wordpress_post_html(request_filepath) -> str:
+def create_wordpress_post_html(request_filepath, gpt_model) -> str:  # gpt_modelを追加
     api_question = open(request_filepath).read()
 
     content = ""
-    post_html = use_chat_GPT_API(api_question, os.getenv("OUTPUT_CHAT_GPT_RESPONSE_PATH"))
+    post_html = use_chat_GPT_API(api_question, os.getenv("OUTPUT_CHAT_GPT_RESPONSE_PATH"), gpt_model)  # gpt_modelを追加
     content += post_html
     with open("assets/affiliates/affiliate.html") as fp:
         content += fp.read()
