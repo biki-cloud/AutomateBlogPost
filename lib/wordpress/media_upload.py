@@ -1,10 +1,11 @@
+import logging
 import requests
 import os
 import json
 
 
 def wp_upload_media(file_path):
-    url = os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_CONTENT_POST_ENTRY_POINT")
+    url = os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_MEDIA_POST_ENTRY_POINT")
 
     user = os.getenv("WORDPRESS_API_USERNAME")
     password = os.getenv("WORDPRESS_API_PASSWORD")
@@ -19,6 +20,15 @@ def wp_upload_media(file_path):
         'Content-Type': 'image/png',
         'Content-Disposition': 'attachment; filename=' + filename,
     }
+
+    # create logger
+    logger = logging.getLogger(__name__)
+    # log each values to use requests
+    print(f"url: {url}")
+    print(f"user: {user}")
+    print(f"password: {password}")
+    print(f"headers: {headers}")
+
 
     res = requests.post(
         url,

@@ -5,6 +5,7 @@ from requests import Response
 import logging
 import urllib.parse
 
+
 # 自作のモジュールをインポート
 from lib.wordpress.post import post as wp_post, create_wordpress_post_html
 from lib.icatch.create_and_push import create_and_upload
@@ -60,8 +61,8 @@ def post():
         os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_CONTENT_POST_ENTRY_POINT"),
         os.getenv("WORDPRESS_API_USERNAME"),
         os.getenv("WORDPRESS_API_PASSWORD"),
-        gpt_model  # 追加
-        # create_and_upload(os.getenv("INPUT_ICATCH_TITLE_PATH"))
+        gpt_model,  # 追加
+        media_id=create_and_upload(os.getenv("INPUT_ICATCH_TITLE_PATH"))
     )
     posted_url = ""
     error_msg = ""

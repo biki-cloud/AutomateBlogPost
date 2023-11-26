@@ -24,7 +24,7 @@ def post(create_content_func, post_api_url, API_USERNAME, API_PASSWORD, gpt_mode
         'slug': title,
         'status': 'publish',  # draft=下書き、publish=公開　省略時はdraftになる,
         # 'categories': 4, # カテゴリーIDが入る
-        # 'featured_media': media_id # アップロードした画像のIDが入る
+        'featured_media': media_id # アップロードした画像のIDが入る
     }
 
     def do_post():

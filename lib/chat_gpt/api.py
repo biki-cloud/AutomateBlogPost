@@ -2,16 +2,20 @@ from logging import getLogger
 import os
 
 import openai
+from openai import OpenAI
 
 from lib.utils.markdown import to_html
 
 logger = getLogger(__name__)
 
+client = OpenAI(
+    api_key=os.getenv("CHAT_GPT_API_KEY"),
+)
 
 def chat_GPT_API(request_message: str, gpt_model: str) -> str:  # gpt_modelを追加
     openai.api_key = os.getenv("CHAT_GPT_API_KEY")
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=gpt_model,  # gpt_modelを使用
         messages=[
             {
@@ -24,7 +28,7 @@ def chat_GPT_API(request_message: str, gpt_model: str) -> str:  # gpt_modelを�
             },
         ]
     )
-    return response["choices"][0]["message"]["content"]  # 返信のみを出力
+    return response.choices[0].message.content
 
 
 def use_chat_GPT_API(request_message, api_response_path, gpt_model):  # gpt_modelを追加
