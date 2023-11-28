@@ -1,11 +1,6 @@
 # 必要なモジュールをインポート
-from flask import Flask, render_template, request
-import os
 from requests import Response
-import logging
-import urllib.parse
 import csv
-import random
 import schedule
 import time
 
@@ -56,9 +51,10 @@ def execute():
 
     # create request message
     prompt_message = f"""
-    「{keyword_string}」のキーワードで上位表示するための記事を作成してください。（後述の制約を守って）
+    「{keyword_string}」のキーワードで小学生でもわかる様に丁寧に解説するための記事を書いてください。
     ■制約
     ・マークダウン形式で作成してください
+    ・キーワードに関する作成した記事のみを回答として出力してください。
     """
     post_title = f"{keyword_string}について小学生でもわかる様に解説！"
     icatch_title = keyword_string
