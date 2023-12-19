@@ -14,38 +14,38 @@ No,階層,単語数,キーワード,isPosted
 201,2,3,golang map 初期化,1
 202,2,3,golang map 存在確認,1
 203,2,3,golang map for,1
-204,2,3,golang map 追加,
-205,2,3,golang map keys,
-206,2,3,golang map range,
-207,2,2,golang maps,
-208,2,3,golang map delete,
-209,2,3,golang map sort,
+204,2,3,golang map 追加,1
+205,2,3,golang map keys,1
+206,2,3,golang map range,1
+207,2,2,golang maps,1
+208,2,3,golang map delete,1
+209,2,3,golang map sort,1
 300,1,2,golang playground,1
-301,2,3,golang playground validator,
-302,2,3,golang playground map,
-303,2,3,golang playground time,
-304,2,3,golang playground tutorial,
-305,2,4,golang playground json unmarshal,
-306,2,3,golang playground slice,
-307,2,3,golang playground strings,
-308,2,4,golang playground import package,
-309,2,4,golang playground time now,
+301,2,3,golang playground validator,1
+302,2,3,golang playground map,1
+303,2,3,golang playground time,1
+304,2,3,golang playground tutorial,1
+305,2,4,golang playground json unmarshal,1
+306,2,3,golang playground slice,1
+307,2,3,golang playground strings,1
+308,2,4,golang playground import package,1
+309,2,4,golang playground time now,1
 400,1,2,golang for,1
-401,2,2,golang for文,
-402,2,2,golang format,
-403,2,3,golang for break,
+401,2,2,golang for文,1
+402,2,2,golang format,1
+403,2,3,golang for break,1
 404,2,3,golang format string,1
-405,2,2,golang フォルダ構成,
+405,2,2,golang フォルダ構成,1
 406,2,2,golang formatter,1
-407,2,3,golang format bool,
-408,2,3,golang for defer,
-409,2,3,golang for map,
+407,2,3,golang format bool,1
+408,2,3,golang for defer,1
+409,2,3,golang for map,1
 500,1,2,golang install,1
-501,2,3,golang install ubuntu,
-502,2,3,golang install mac,
-503,2,3,golang install linux,
-504,2,3,golang install windows,
-505,2,3,golang install centos,
+501,2,3,golang install ubuntu,1
+502,2,3,golang install mac,1
+503,2,3,golang install linux,1
+504,2,3,golang install windows,1
+505,2,3,golang install centos,1
 506,2,3,golang install apt,
 507,2,3,golang install version,
 508,2,3,golang install module,
@@ -382,7 +382,7 @@ No,階層,単語数,キーワード,isPosted
 29100,1,2,golang ファイル読み込み,
 29200,1,2,golang ファイル書き込み,
 29300,1,2,golang 副業,
-29400,1,2,golang フォルダ構成,
+29400,1,2,golang フォルダ構成,1
 29500,1,2,golang ファイル削除,
 29600,1,2,golang ファイル名,
 29700,1,2,golang ファイル作成,
@@ -871,9 +871,9 @@ No,階層,単語数,キーワード,isPosted
 78000,1,2,golang flag,
 78100,1,2,golang フレームワーク,
 78200,1,2,golang fmt,
-78300,1,2,golang for文,
+78300,1,2,golang for文,1
 78400,1,2,golang ファイル読み込み,
-78500,1,2,golang format,
+78500,1,2,golang format,1
 78600,1,2,golang filepath,
 78700,1,2,golang func,
 78800,1,2,golang gin,1

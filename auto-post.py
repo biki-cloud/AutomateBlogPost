@@ -51,10 +51,9 @@ def execute():
 
     # create request message
     prompt_message = f"""
-    「{keyword_string}」のキーワードで小学生でもわかる様に丁寧に解説するための記事を書いてください。
+    「{keyword_string}」のキーワードで解説する記事を書いてください。
     ■制約
     ・マークダウン形式で作成してください
-    ・キーワードに関する作成した記事のみを回答として出力してください。
     """
     post_title = f"{keyword_string}について小学生でもわかる様に解説！"
     icatch_title = keyword_string
@@ -95,8 +94,6 @@ def execute():
 if __name__ == "__main__":
     # 日本時間で夜の７時、８じ、９時にexecute関数を実行する様にセットする
     schedule.every().day.at(f"19:00").do(execute)
-    schedule.every().day.at(f"19:30").do(execute)
-    schedule.every().day.at(f"20:00").do(execute)
     while True:
         schedule.run_pending()
         time.sleep(1)
