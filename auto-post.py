@@ -49,49 +49,63 @@ def execute():
     import os
     os.replace(temp_csv_file_path, csv_file_path)
 
-    # create request message
-    prompt_message = f"""
-    「{keyword_string}」のキーワードで解説する記事を書いてください。
-    ■制約
-    ・マークダウン形式で作成してください
-    """
-    post_title = f"{keyword_string}について小学生でもわかる様に解説！"
-    icatch_title = keyword_string
-    print("-------- prompt message ------------")
-    print(prompt_message)
-    print("-------- post title ------------")
-    print(post_title)
-    print("-------- icatch title ------------")
-    print(icatch_title)
+    prompt_messages = [
+        f"""
+        「{keyword_string}」のキーワードで解説する記事を書いてください。
+        ■制約
+        ・マークダウン形式で作成してください
+        ・日本語で書いてください
+        """
+        ,
+        f"""
+        Please write an article explaining with the keyword "{keyword_string}".
+        ■Constraints
+        Please create your article in markdown format.
+        write in English.
+        """
+    ]
+    post_titles = [
+        f"{keyword_string}について小学生でもわかる様に解説！",
+        f"Explanation about {keyword_string}"
+    ]
+    for prompt_message, post_title in zip(prompt_messages, post_titles):
+        icatch_title = keyword_string
+        print("-------- prompt message ------------")
+        print(prompt_message)
+        print("-------- post title ------------")
+        print(post_title)
+        print("-------- icatch title ------------")
+        print(icatch_title)
 
-    # データをファイルに書き込む
-    with open(os.getenv("INPUT_API_REQUEST_PATH"), "w") as fp:
-        fp.write(prompt_message)
-    with open(os.getenv("INPUT_POST_TITLE_PATH"), "w") as fp:
-        fp.write(post_title)
-    with open(os.getenv("INPUT_ICATCH_TITLE_PATH"), "w") as fp:
-        fp.write(icatch_title)
+        # データをファイルに書き込む
+        with open(os.getenv("INPUT_API_REQUEST_PATH"), "w") as fp:
+            fp.write(prompt_message)
+        with open(os.getenv("INPUT_POST_TITLE_PATH"), "w") as fp:
+            fp.write(post_title)
+        with open(os.getenv("INPUT_ICATCH_TITLE_PATH"), "w") as fp:
+            fp.write(icatch_title)
 
-    print("-------- creating and postring post message .... ------------")
-    # WordPressに投稿
-    res: Response = wp_post(
-        create_wordpress_post_html,
-        os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_CONTENT_POST_ENTRY_POINT"),
-        os.getenv("WORDPRESS_API_USERNAME"),
-        os.getenv("WORDPRESS_API_PASSWORD"),
-        gpt_model,  # 追加
-        media_id=create_and_upload(os.getenv("INPUT_ICATCH_TITLE_PATH"))
-    )
+        print("-------- creating and postring post message .... ------------")
+        # WordPressに投稿
+        res: Response = wp_post(
+            create_wordpress_post_html,
+            os.getenv("WORDPRESS_BASE_URL") + os.getenv("WORDPRESS_CONTENT_POST_ENTRY_POINT"),
+            os.getenv("WORDPRESS_API_USERNAME"),
+            os.getenv("WORDPRESS_API_PASSWORD"),
+            gpt_model,  # 追加
+            media_id=create_and_upload(os.getenv("INPUT_ICATCH_TITLE_PATH"))
+        )
 
-    if res.status_code == 201:
-            res_json = res.json()
-            posted_url = res_json['link']
-            print(posted_url)
-    else:
-        error_msg = res.content.decode("utf-8")
-        print(error_msg)
+        if res.status_code == 201:
+                res_json = res.json()
+                posted_url = res_json['link']
+                print(posted_url)
+        else:
+            error_msg = res.content.decode("utf-8")
+            print(error_msg)
 
 if __name__ == "__main__":
+    # execute()
     # 日本時間で夜の７時、８じ、９時にexecute関数を実行する様にセットする
     schedule.every().day.at(f"19:00").do(execute)
     while True:

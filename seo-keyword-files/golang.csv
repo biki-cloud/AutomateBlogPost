@@ -46,9 +46,9 @@ No,階層,単語数,キーワード,isPosted
 503,2,3,golang install linux,1
 504,2,3,golang install windows,1
 505,2,3,golang install centos,1
-506,2,3,golang install apt,
-507,2,3,golang install version,
-508,2,3,golang install module,
+506,2,3,golang install apt,1
+507,2,3,golang install version,1
+508,2,3,golang install module,1
 509,2,3,golang install package,
 600,1,2,golang interface,1
 601,2,4,golang interface to string,
